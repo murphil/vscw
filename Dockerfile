@@ -3,7 +3,6 @@ FROM node:10-buster-slim as b
 ARG vscode_version=1.40.0
 ARG vscode_url=https://github.com/microsoft/vscode/archive/${vscode_version}.tar.gz
 
-WORKDIR /opt/vscode
 ENV build_deps \
         make \
         gcc \
@@ -25,6 +24,7 @@ RUN set -eux \
   ; wget -q -O- ${vscode_url} \
     | tar zxf - -C /opt/vscode --strip-components=1
 
+WORKDIR /opt/vscode
 RUN yarn
 
 FROM node:10-buster-slim
