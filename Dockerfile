@@ -7,6 +7,7 @@ ENV build_deps \
         make \
         gcc \
         g++ \
+        git \
         pkg-config \
         libx11-dev \
         libxkbfile-dev \
@@ -32,3 +33,5 @@ FROM node:10-buster-slim
 WORKDIR /opt/vscode
 
 COPY --from=b /opt/vscode /opt/vscode
+
+CMD [ "yarn" ]
