@@ -19,13 +19,11 @@ RUN set -eux \
   ; DEBIAN_FRONTEND=noninteractive \
     apt-get install -y --no-install-recommends ${build_deps} \
   ; mkdir -p /opt/vscode \
-  ; curl -# ${vscode_url} \
+  ; wget -q -O- ${vscode_url} \
     | tar zxf - -C /opt/vscode --strip-components=1 \
   ; cd /opt/vscode \
   #; yarn config set registry 'https://registry.npm.taobao.org' \
   ; yarn
-  #; yarn install \
-  #; yarn build
 
 FROM node:10-buster-slim
 
